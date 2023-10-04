@@ -5,6 +5,8 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 app.use(cors());
 app.use(express.json());
+const expenseRoute = require("./route/expenseRoutes");
+app.use("/api/v1/expense", expenseRoute);
 mongoose
   .connect(process.env.MONGO_URL)
   .then(() => {

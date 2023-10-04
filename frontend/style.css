@@ -1,0 +1,66 @@
+body {
+  padding: 20px 150px;
+}
+
+.title {
+  text-align: center;
+}
+.title_2 {
+  text-align: center;
+  color: green;
+  font-weight: bold;
+}
+#name {
+  width: 100%;
+}
+#date {
+  width: 100%;
+}
+#amount {
+  width: 100%;
+}
+#name_label {
+  display: block;
+}
+.name_container {
+  display: flex;
+  gap: 5px;
+  justify-content: space-between;
+  width: 100%;
+}
+#button {
+  background-color: green;
+  color: white;
+  font-weight: bold;
+  font-size: 13px;
+  text-align: center;
+  margin-left: 45%;
+}
+
+table {
+  border: 1px solid black;
+
+  width: 100%;
+
+  /* background-color: lightgrey; */
+  border: none;
+  color: black;
+  padding: 10px 10px;
+  /* text-align: center; */
+  text-decoration: none;
+  /* display: inline-block; */
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 10%;
+  margin-top: 3rem;
+  overflow-x: auto;
+}
+table td {
+  background-color: lightgray;
+  height: 2rem;
+  padding-left: 1rem;
+  border: none;
+}
+.item {
+  display: none;
+}

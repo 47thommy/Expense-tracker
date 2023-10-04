@@ -38,9 +38,8 @@ const deleteExpense = async (req, res) => {
 const createExpense = async (req, res) => {
   try {
     const expense = await Expense.create(req.body);
-    res.status(400).json(expense);
 
-    res.status(200).json(expenses);
+    res.status(200).json(expense);
   } catch (error) {
     console.log(error.message);
   }

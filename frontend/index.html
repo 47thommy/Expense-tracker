@@ -8,42 +8,46 @@
     <script defer src="index.js"></script>
   </head>
   <body>
-    <h1 class="title">Exprense Tracker</h1>
-    <h3 class="title_2">Add A New Item</h3>
+    <header>
+      <h1 class="title">Expense Tracker</h1>
+      <h3 class="title_2">Add A New Item</h3>
+    </header>
 
-    <form>
-      <div class="name_container">
-        <label id="name_label" for="name">Name:</label>
+    <form class="expense-form">
+      <div class="form-group">
+        <label for="name">Name:</label>
         <input
           placeholder="Where Was The Expense Made?"
           type="text"
           id="name"
         />
       </div>
-      <br />
 
-      <div class="name_container">
-        <div class="name_container">
-          <label id="name_label" for="date">Date:</label>
-          <input type="date" id="date" />
-        </div>
-        <div class="name_container">
-          <label id="name_label" for="number">Amount:</label>
-          <input type="number" id="amount" />
-        </div>
+      <div class="form-group">
+        <label for="date">Date:</label>
+        <input type="date" id="date" />
       </div>
-      <br />
+
+      <div class="form-group">
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" />
+      </div>
+
+      <button id="button">Add Expense</button>
     </form>
-    <button id="button">Add Expense</button>
+
     <table id="table">
-      <tbody id="body">
+      <thead>
         <tr>
           <th>Name</th>
           <th>Date</th>
-          <th colspan="2">Amount</th>
+          <th>Amount</th>
+          <th>Action</th>
         </tr>
-        <tr>
-          <td id="no-item" colspan="4">No Expenses Added Yet!</td>
+      </thead>
+      <tbody id="body">
+        <tr id="no-item">
+          <td colspan="4">No Expenses Added Yet!</td>
         </tr>
       </tbody>
     </table>

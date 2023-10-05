@@ -1,66 +1,90 @@
 body {
   padding: 20px 150px;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .title {
-  text-align: center;
+  font-size: 24px;
 }
+
 .title_2 {
-  text-align: center;
   color: green;
   font-weight: bold;
 }
-#name {
-  width: 100%;
+
+.expense-form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f5f5f5;
 }
-#date {
-  width: 100%;
+
+.form-group {
+  margin-bottom: 10px;
 }
-#amount {
-  width: 100%;
-}
-#name_label {
+
+label {
   display: block;
+  font-weight: bold;
 }
-.name_container {
-  display: flex;
-  gap: 5px;
-  justify-content: space-between;
+
+input[type="text"],
+input[type="date"],
+input[type="number"] {
   width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
-#button {
+
+button {
+  display: block;
   background-color: green;
   color: white;
   font-weight: bold;
   font-size: 13px;
   text-align: center;
-  margin-left: 45%;
+  margin: 0 auto;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 table {
-  border: 1px solid black;
-
   width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
 
-  /* background-color: lightgrey; */
-  border: none;
-  color: black;
-  padding: 10px 10px;
-  /* text-align: center; */
-  text-decoration: none;
-  /* display: inline-block; */
-  font-size: 1rem;
-  cursor: pointer;
-  margin-bottom: 10%;
-  margin-top: 3rem;
-  overflow-x: auto;
-}
+table th,
 table td {
-  background-color: lightgray;
-  height: 2rem;
-  padding-left: 1rem;
-  border: none;
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
 }
-.item {
+
+#no-item {
   display: none;
+}
+
+.remove {
+  background-color: #ff6347;
+  color: white;
+  font-weight: bold;
+  padding: 4px 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.remove:hover {
+  background-color: #d34535;
 }

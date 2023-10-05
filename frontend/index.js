@@ -5,7 +5,6 @@ const amount = document.getElementById("amount");
 const table = document.getElementById("table");
 const noItem = document.getElementById("no-item");
 const tableBody = document.getElementById("body");
-const expenseArray = [];
 
 button.addEventListener("click", async (e) => {
   if (Name.value == "" || date.value == "" || amount.value == "") {
@@ -13,7 +12,7 @@ button.addEventListener("click", async (e) => {
     return;
   }
 
-  const newExpense = await fetch("http://localhost:5000/api/v1/expense", {
+  const response = await fetch("http://localhost:5000/api/v1/expense", {
     method: "POST",
     body: JSON.stringify({
       name: Name.value,
@@ -24,17 +23,25 @@ button.addEventListener("click", async (e) => {
       "Content-Type": "application/json",
     },
   });
+  const json = response.json();
 
   Name.value = "";
   date.value = "";
   amount.value = "";
-  expenseArray.push(newExpense);
+  getExpenses();
 });
 const getExpenses = async () => {
   const expenses = await fetch("http://localhost:5000/api/v1/expense", {
     method: "GET",
   });
+
   const json = await expenses.json();
+  if (expenses.ok) {
+    tableBody.innerHTML = "";
+  }
+  if (json.length > 0) {
+    noItem.setAttribute("class", "item");
+  }
   json.map((data) => {
     const newRow = document.createElement("tr");
     const newName = document.createElement("td");
@@ -47,8 +54,13 @@ const getExpenses = async () => {
 
     const deleteValue = document.createTextNode("X");
     deleteBtn.appendChild(deleteValue);
+    const date = new Date(data.date);
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    const formattedDate = new Intl.DateTimeFormat("en-US", options).format(
+      date
+    );
     const nameValue = document.createTextNode(data.name);
-    const dateValue = document.createTextNode(data.date);
+    const dateValue = document.createTextNode(formattedDate);
     const amountValue = document.createTextNode(data.amount);
     deleteRow.appendChild(deleteBtn);
     newName.appendChild(nameValue);
@@ -60,16 +72,9 @@ const getExpenses = async () => {
     newRow.append(deleteRow);
 
     tableBody.appendChild(newRow);
-    expenseArray.push(newRow);
-    if (expenseArray.length != 0) {
-      noItem.className = "item";
-    } else {
-      noItem.removeAttribute("class", "item");
-    }
   });
 };
 
-getExpenses();
 table.addEventListener("click", async (e) => {
   if (e.target.classList.contains("remove")) {
     if (confirm("are you sure you want to remove this expense?")) {
@@ -81,10 +86,5 @@ table.addEventListener("click", async (e) => {
       tableBody.removeChild(removeRow);
     }
   }
-  expenseArray.pop();
-  if (expenseArray.length != 0) {
-    noItem.className = "item";
-  } else {
-    noItem.removeAttribute("class", "item");
-  }
 });
+getExpenses();
